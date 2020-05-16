@@ -20,8 +20,8 @@ public class WordSearcher {
     }
 
     public void findWord() {
-        for (int i = 0; i < length; ++i) {
-            for (int j = 0; j < length; ++j) {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
                 if (matrix[i][j] == word[0]) {
                     if (isWordInMatrix(i, j, "", 0, word.length - 1)) {
                         return;
@@ -44,7 +44,7 @@ public class WordSearcher {
             return true;
         }
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < rowNum.length; i++) {
             if (isValid(row + rowNum[i], column + colNum[i])) {
                 if (isWordInMatrix(row + rowNum[i], column + colNum[i],
                         path, index + 1, wordLength)) {
