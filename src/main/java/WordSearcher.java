@@ -23,7 +23,7 @@ public class WordSearcher {
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
                 if (matrix[i][j] == word[0]) {
-                    if (isWordInMatrix(i, j, "", 0, word.length - 1)) {
+                    if (isWordInMatrix(i, j, "", 0)) {
                         return;
                     }
                 }
@@ -32,14 +32,14 @@ public class WordSearcher {
         System.out.println("Can't find word " + new String(word) + " in matrix");
     }
 
-    private boolean isWordInMatrix(int row, int column, String path, int index, int wordLength) {
-        if (index > wordLength || matrix[row][column] != word[index]) {
+    private boolean isWordInMatrix(int row, int column, String path, int index) {
+        if (matrix[row][column] != word[index]) {
             return false;
         }
 
         path += "[" + row + ", " + column + "]";
 
-        if (index == wordLength) {
+        if (index == word.length - 1) {
             System.out.print("Answer: " + path.replaceAll("]\\[", "]->[") + "\n");
             return true;
         }
@@ -47,7 +47,7 @@ public class WordSearcher {
         for (int i = 0; i < rowNum.length; i++) {
             if (isValid(row + rowNum[i], column + colNum[i])) {
                 if (isWordInMatrix(row + rowNum[i], column + colNum[i],
-                        path, index + 1, wordLength)) {
+                        path, index + 1)) {
                     return true;
                 }
             }
