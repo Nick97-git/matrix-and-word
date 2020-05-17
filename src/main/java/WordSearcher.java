@@ -2,20 +2,23 @@ public class WordSearcher {
     private final int[] rowNum = {-1, 1, 0, 0};
     private final int[] colNum = {0, 0, -1, 1};
     private final char[] word;
-    private char[][] matrix;
-    private int length;
+    private final char[][] matrix;
+    private final int length;
 
-    public WordSearcher(char[] word) {
+    public WordSearcher(char[] word, int length) {
         this.word = word;
+        this.length = length;
+        this.matrix = new char[length][length];
     }
 
-    public char[][] fillMatrix(String matrixString) {
-        length = (int) Math.sqrt(matrixString.length());
+    public void fillMatrix(String matrixString) {
         String[] splitString = matrixString.split("(?<=\\G.{" + length + "})");
-        matrix = new char[length][length];
         for (int i = 0; i < splitString.length; i++) {
             matrix[i] = splitString[i].toCharArray();
         }
+    }
+
+    public char[][] getMatrix() {
         return matrix;
     }
 

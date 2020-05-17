@@ -13,8 +13,10 @@ public class Main {
                 if (Math.sqrt(matrixString.length()) % 1 == 0
                         && word.length <= matrixString.length()
                         && matrixString.length() != 0 && word.length != 0) {
-                    WordSearcher wordSearcher = new WordSearcher(word);
-                    char[][] matrix = wordSearcher.fillMatrix(matrixString);
+                    int length = (int) Math.sqrt(matrixString.length());
+                    WordSearcher wordSearcher = new WordSearcher(word, length);
+                    wordSearcher.fillMatrix(matrixString);
+                    char[][] matrix = wordSearcher.getMatrix();
                     System.out.println("Filled matrix: ");
                     for (char[] cells : matrix) {
                         for (char cell : cells) {
